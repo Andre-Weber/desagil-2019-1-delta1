@@ -3,15 +3,18 @@ package br.pro.hashi.ensino.desagil.desafio;
 import br.pro.hashi.ensino.desagil.desafio.model.CpuPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.HumanPlayer;
 import br.pro.hashi.ensino.desagil.desafio.model.Model;
+import br.pro.hashi.ensino.desagil.desafio.model.Target;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 public class Controller implements KeyListener, ActionListener {
     private final Model model;
     private final View view;
+    private final Random random = new Random();
 
 
     public Controller(Model model, View view) {
@@ -65,6 +68,15 @@ public class Controller implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CpuPlayer cpuPlayer = model.getCpuPlayer();
+        Target target = model.getTarget();
+
+        int number1 = random.nextInt(1 + 1 + 1) - 1;
+
+        int number2 = random.nextInt(1 + 1 + 1) - 1;
+
+
+        target.move(number1, number2);
+
 
         cpuPlayer.move();
 
